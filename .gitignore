@@ -3,6 +3,9 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+# emacs save files
+*~
+
 # C extensions
 *.so
 
