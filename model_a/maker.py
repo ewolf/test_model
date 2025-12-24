@@ -8,10 +8,11 @@ from transformers import (
     BertForMaskedLM,
     BertTokenizerFast,
     DataCollatorForLanguageModeling,
-    Trainer,
     TrainingArguments,
 )
 
+from model_a.trainer import Trainer
+from model_a.training_args import TrainingArguments
 
 def _has_tokenizer_files(path: str) -> bool:
     expected = {"tokenizer.json", "vocab.txt"}
