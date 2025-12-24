@@ -96,9 +96,16 @@ def tokenize_and_group(
         seq = seq[:total_len]
         result[k] = [seq[i : i + block_size] for i in range(0, total_len, block_size)]
 
+    # result is
+    # {
+    #  'input_ids': [[...chunked ints..],[..chunked ints...],...]
+    #  'token_type_ids': [[..chunked 0s and 1s...],[..chunked 0s and 1s...],..]
+    #  'attention_mask': [[..chunked 0s and 1s...],[..chunked 0s and 1s...],..]
+    # }
+        
     return result
 
-def main():
+def make_model():
     tokenizer_dir = os.environ.get("TOKENIZER_PATH", "tokenizer")
     tokenizer_fallback = os.environ.get("TOKENIZER_FALLBACK", "bert-base-uncased")
     out_dir       = "mlm_out"
@@ -117,6 +124,7 @@ def main():
         batched=True,
         remove_columns=["text"],
     )
+
 
     # MLM data collator randomly masks tokens.
     # mlm_probability = fraction of tokens selected for masking
@@ -166,6 +174,9 @@ def main():
 
     print(f"Saved MLM-pretrained model to: {out_dir}")
 
+def main():
+    pass
 
+    
 if __name__ == "__main__":
     main()
