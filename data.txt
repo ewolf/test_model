@@ -1,0 +1,8 @@
+
+VERSION 1:
+  model_maker: calls trainer.train on transformers.Trainer
+
+   Test metrics: {'eval_loss': 0.5547839403152466, 'eval_accuracy': 0.7185741088180112, 'eval_runtime': 0.3293, 'eval_samples_per_second': 3237.349, 'eval_steps_per_second': 203.473, 'epoch': 3.0}
+
+VERSION 2:
+   unpack transformers.Trainer into its component parts
